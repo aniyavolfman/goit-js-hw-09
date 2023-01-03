@@ -40,6 +40,12 @@ function onButtonStartClick() {
     buttonEl.disabled = true;
     timerId = setInterval(() => {
         const deltaTime = selected.getTime() - Date.now();
+        if (deltaTime <= 0) {
+            clearInterval(timerId);
+            console.log('stop');
+            return;
+        }
+        
         const { days, hours, minutes, seconds } = convertMs(deltaTime);
 
         dataDaysEl.textContent = addLeadingZero(days);
