@@ -9,10 +9,15 @@ const dataHoursEl = document.querySelector('span[data-hours]');
 const dataMinutesEl = document.querySelector('span[data-minutes]');
 const dataSecondsEl = document.querySelector('span[data-seconds]');
 
+const inputEl = document.querySelector('#datetime-picker');
+
 let timerId = null;
 let selected;
 
 buttonEl.disabled = true;
+
+
+console.dir(inputEl)
 
 const options = {
     enableTime: true,
@@ -39,7 +44,9 @@ buttonEl.addEventListener('click', onButtonStartClick);
 
 function onButtonStartClick() {
   buttonEl.disabled = true;
+  inputEl.disabled = true;
   Notify.success('Correct!');
+  
     timerId = setInterval(() => {
         const deltaTime = selected.getTime() - Date.now();
         if (deltaTime <= 0) {
