@@ -1,23 +1,30 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-const buttonCreateEl = document.querySelector('button[type="submit"]');
+const formEl = document.querySelector('.form');
+
 const inputFirstDelayEl = document.querySelector('input[name="delay"]');
 const inputDelayStepEl = document.querySelector('input[name="step"]');
 const inputAmountEl = document.querySelector('input[name="amount"]');
 
+formEl.addEventListener('submit', onFormSubmit);
 
+function onFormSubmit(event) {
 
-buttonCreateEl.addEventListener('click', onButtonClick);
+  event.preventDefault();
 
-function onButtonClick() {
+  let delay = Number(inputFirstDelayEl.value);
+  let step = Number(inputDelayStepEl.value);
+
   for (let i = 1; i <= inputAmountEl.value; i += 1){
-    createPromise(i, inputFirstDelayEl.value)
-  .then(({ position, delay }) => {
-    Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
-  })
-  .catch(({ position, delay }) => {
-    Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
-  })
+    createPromise(i, delay)
+      .then(({ position, delay }) => {
+        Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
+      })
+      .catch(({ position, delay }) => {
+        Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
+      });
+    
+    delay += step;
     
   };
 }
