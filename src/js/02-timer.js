@@ -12,7 +12,7 @@ const dataSecondsEl = document.querySelector('span[data-seconds]');
 const inputEl = document.querySelector('#datetime-picker');
 
 let timerId = null;
-let selected;
+let selected = null;
 
 buttonEl.disabled = true;
 
