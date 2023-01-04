@@ -2,6 +2,7 @@ const buttonStartEl = document.querySelector('[data-start]');
 const buttonStopEl = document.querySelector('[data-stop]');
 
 let timerId = null;
+buttonStopEl.disabled = true;
 
 buttonStartEl.addEventListener('click', onButtonStartClick);
 buttonStopEl.addEventListener('click', onButtonStopClick);
