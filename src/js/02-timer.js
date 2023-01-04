@@ -16,9 +16,6 @@ let selected;
 
 buttonEl.disabled = true;
 
-
-console.dir(inputEl)
-
 const options = {
     enableTime: true,
     time_24hr: true,
