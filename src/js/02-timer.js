@@ -26,7 +26,7 @@ const options = {
     minuteIncrement: 1,
     onClose(selectedDates) {
         if (selectedDates[0].getTime() < Date.now()) {
-            Notify.failure('Please choose a date in the future'); 
+            Notify.failure('Please choose a date in the future!'); 
             buttonEl.disabled = true;
         }
         else {
@@ -45,8 +45,8 @@ buttonEl.addEventListener('click', onButtonStartClick);
 function onButtonStartClick() {
   buttonEl.disabled = true;
   inputEl.disabled = true;
-  Notify.success('Correct!');
-  
+  Notify.success('Let&#39;s go!');
+
     timerId = setInterval(() => {
         const deltaTime = selected.getTime() - Date.now();
         if (deltaTime <= 0) {
